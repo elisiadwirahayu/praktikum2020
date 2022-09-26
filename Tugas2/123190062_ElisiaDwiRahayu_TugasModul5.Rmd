@@ -1,0 +1,89 @@
+---
+title: "Tugas Conditional Expressions"
+author: "Elisia Dwi Rahayu"
+date: "2022-09-24"
+output: pdf_document
+---
+
+```{r}
+library(dslabs)
+data("murders")
+```
+
+## Soal Nomor 1
+
+Fungsi nchar dapat digunakan untuk menghitung jumlah karakter dari suatu vektor karakter. Buatlah satu baris kode yang akan menyimpan hasil komputasi pada variabel 'new_names' dan berisi singkatan nama negara ketika jumlah karakternya lebih dari 8 karakter.
+
+```{r}
+count <- nchar(murders$state)
+new_names <- count
+total <- length(murders$state)
+
+for(i in 1:total){
+  if(count[i] < 8)
+  {
+    new_names[i] <- count[i]
+  } else
+  {
+    new_names[i] <- murders$abb[i]
+  }
+}
+
+new_names
+```
+
+
+## Soal Nomor 2
+
+Buat fungsi sum_n yang dapat digunakan untuk menghitung jumlah bilangan bulat dari 1 hingga n. Gunakan pula fungsi ini untuk menentukan jumlah bilangan bulat dari 1 hingga 5000.
+
+```{r}
+sum_n <- function(n) {
+  1/2*(n^2+n)
+}
+
+sum_n(5000)
+```
+
+
+## Soal Nomor 3
+
+Buat fungsi compute_s_n yang dapat digunakan untuk menghitung jumlah Sn=1^2+2^2+3^2+...n^2. Tampilkan hasil penjumlahan ketika n = 10.
+
+```{r}
+compute_s_n <- function(x){
+  (x*(x+1)*(2*x+1))/6
+}
+
+compute_s_n(10)
+```
+
+
+## Soal Nomor 4
+
+Buat vektor numerik kosong dengan nama: s_n dengan ukuran:25 menggunakan s_n <- vector ("numeric", 25).
+Simpan di hasil komputasi S1, S2, ... S25 menggunakan FOR-LOOP.
+
+```{r}
+m <- 25
+s_n <- vector ("numeric", m)
+
+for(i in 1:m)
+{
+  s_n[i] <- compute_s_n(i)
+}
+
+s_n
+```
+
+
+## Soal Nomor 5
+
+Ulangi langkah pada soal no.4 dan gunakan fungsi sapply
+
+```{r}
+m <- 25
+s_n <- vector ("numeric", m)
+
+sapply(1:25, s_n <- compute_s_n)
+```
